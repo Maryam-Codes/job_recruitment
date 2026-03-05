@@ -3,7 +3,7 @@
 // =============================================
 
 // ---- Configuration ----
-const WEBHOOK_URL = 'https://nexerec.app.n8n.cloud/webhook/web-chat'; // UPDATE THIS after creating the n8n webhook
+const WEBHOOK_URL = 'https://n8n.srv1265565.hstgr.cloud/webhook-test/web-chat'; // UPDATE THIS after creating the n8n webhook
 
 // ---- State ----
 let chatOpen = false;
@@ -349,4 +349,5 @@ function showChatInterface() {
 function generateSessionId() {
     return 'web_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 }
+
 
