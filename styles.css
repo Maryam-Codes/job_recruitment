@@ -25,8 +25,8 @@
   --border-color: rgba(255, 255, 255, 0.06);
 
   /* Sizing */
-  --chat-width: 400px;
-  --chat-height: 600px;
+  --chat-width: 380px;
+  --chat-height: min(600px, calc(100vh - 120px));
   --toggle-size: 60px;
   --radius: 16px;
   --radius-sm: 10px;
@@ -201,7 +201,7 @@ h1 {
   position: fixed;
   bottom: 24px;
   right: 24px;
-  z-index: 9999;
+  z-index: 999999;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -262,11 +262,12 @@ h1 {
 
 /* ---- Chat Window ---- */
 .chat-window {
-  position: absolute;
-  bottom: calc(var(--toggle-size) + 16px);
-  right: 0;
+  position: fixed;
+  bottom: calc(var(--toggle-size) + 40px);
+  right: 24px;
   width: var(--chat-width);
   height: var(--chat-height);
+  max-height: calc(100vh - 120px);
   background: var(--bg-card);
   border-radius: var(--radius);
   border: 1px solid var(--border-color);
