@@ -23,6 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // If user already registered, skip prechat form
     if (userName && userEmail) {
         showChatInterface();
+    } else {
+        // Hide input area and quick replies during prechat
+        const inputArea = document.getElementById('chat-input-area');
+        const quickReplies = document.getElementById('quick-replies');
+        if (inputArea) inputArea.style.display = 'none';
+        if (quickReplies) quickReplies.style.display = 'none';
     }
     setupInputListener();
 });
@@ -327,6 +333,8 @@ function showChatInterface() {
     document.getElementById('prechat-form').style.display = 'none';
     document.getElementById('chat-messages').style.display = 'flex';
     document.getElementById('quick-replies').style.display = 'flex';
+    const inputArea = document.getElementById('chat-input-area');
+    if (inputArea) inputArea.style.display = 'block';
 
     // Only add welcome + restore if messages area is empty
     const container = document.getElementById('chat-messages');
@@ -341,3 +349,4 @@ function showChatInterface() {
 function generateSessionId() {
     return 'web_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 }
+
