@@ -87,7 +87,7 @@ function toggleChat() {
 
 // ---- Welcome Message ----
 function addWelcomeMessage() {
-    const welcomeText = `Hey there! 👋 Welcome to **DigiM Recruitment**. I'm Priya, how can I help you today?`;
+    const welcomeText = `Hey there! 👋 Welcome to **DigiM Recruitment**. How can I help you today?`;
 
     addMessage('bot', welcomeText);
 }
@@ -345,4 +345,3 @@ function showChatInterface() {
 function generateSessionId() {
     return 'web_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 }
-
