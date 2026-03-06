@@ -3,7 +3,7 @@
 // =============================================
 
 // ---- Configuration ----
-const WEBHOOK_URL = 'https://n8n.srv1265565.hstgr.cloud/webhook-test/web-chat'; // UPDATE THIS after creating the n8n webhook
+const WEBHOOK_URL = 'https://nexerec.app.n8n.cloud/webhook/web-chat'; // UPDATE THIS after creating the n8n webhook
 
 // ---- State ----
 let chatOpen = false;
@@ -87,17 +87,7 @@ function toggleChat() {
 
 // ---- Welcome Message ----
 function addWelcomeMessage() {
-    const welcomeText = `Hello! 👋 Welcome to **DigiM Recruitment**.
-
-I'm your AI assistant, here to help you explore career opportunities.
-
-I can help you with:
-• Current job openings & details
-• Salary and qualification info
-• Interview process
-• Submitting your application
-
-How can I assist you today?`;
+    const welcomeText = `Hey there! 👋 Welcome to **DigiM Recruitment**. I'm Priya, how can I help you today?`;
 
     addMessage('bot', welcomeText);
 }
@@ -114,9 +104,13 @@ async function sendMessage() {
     updateSendButton();
     hideQuickReplies();
 
-    // Show typing
+    // Show typing with human-like delay (2-3 seconds before response appears)
     isProcessing = true;
     showTypingIndicator();
+
+    // Add a natural thinking delay (2-3 seconds, never more than 5)
+    const thinkingDelay = 2000 + Math.random() * 1500; // 2000-3500ms
+    await new Promise(resolve => setTimeout(resolve, thinkingDelay));
 
     try {
         const response = await fetch(WEBHOOK_URL, {
@@ -332,7 +326,9 @@ function submitPrechat() {
 function showChatInterface() {
     document.getElementById('prechat-form').style.display = 'none';
     document.getElementById('chat-messages').style.display = 'flex';
-    document.getElementById('quick-replies').style.display = 'flex';
+    // Quick replies removed per client request
+    const qr = document.getElementById('quick-replies');
+    if (qr) qr.style.display = 'none';
     const inputArea = document.getElementById('chat-input-area');
     if (inputArea) inputArea.style.display = 'block';
 
@@ -349,5 +345,4 @@ function showChatInterface() {
 function generateSessionId() {
     return 'web_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
 }
-
 
